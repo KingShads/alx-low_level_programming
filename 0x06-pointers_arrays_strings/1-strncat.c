@@ -4,20 +4,28 @@
  * _strncat - Concatenates two strings
  * @dest: Pointer to the destination string
  * @src: Pointer to the source string
+ * @n: number of characters of src to be appended
  *
  * Return: Pointer to the resulting string dest
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int len = strlen(dest);
-	int i;
+	long int start;
+	long int j = 0;
+	int added_space;
 
-	for ((i = 0 ; i < n && *src != '\0' ; i++)
+	if (n < (int)strlen(dest))
 	{
-		dest[len + i] = *src;
-		src++;
+		added_space = strlen(dest) + n;
 	}
-	dest[len + i] = '\0';
+	else
+		added_space = (strlen(dest)) + (strlen(src));
+
+	for (start = (strlen(dest)); start < added_space; start++)
+	{
+		dest[start] = src[j];
+		j++;
+	}
 
 	return (dest);
 }
