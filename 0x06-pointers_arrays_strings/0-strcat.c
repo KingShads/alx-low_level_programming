@@ -9,20 +9,14 @@
  */
 char *_strcat(char *dest, char *src)
 {
-    /* Find the end of the destination string */
-	while (*dest != '\0')
-		dest++;
+	long int start;
+	long int j = 0;
+	long int added_space = strlen(src) + strlen(dest);
 
-    /* Append the source string to the destination string */
-	while (*src != '\0')
+	for (start = (strlen(dest)); start < added_space; start++)
 	{
-		*dest = *src;
-		dest++;
-		src++;
+		dest[start] = src[j];
+		j++;
 	}
-
-    /* Null-terminate the resulting string */
-	*dest = '\0';
-
 	return (dest);
 }
